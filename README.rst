@@ -80,9 +80,9 @@ Python 2 versions, and probably on even earlier versions.)
 For Python implementations that do not support ``sys.exc_info``, a
 "no traceback" variant can be installed manually, by grabbing the
 ``with_no_traceback.py`` file and saving it *as* ``with_.py``.
-(Saving it as the ``with_.py`` has the advantage that your code can
-just do ``from with_ import with_`` and it'll just work consistently,
-without version-detecting boilerplate.)
+(Saving it as ``with_.py`` has the advantage that your code can just do
+``from with_ import with_`` and it'll just work consistently, without
+version-detecting boilerplate.)
 
 You are of course welcome to just copy-paste the tiny ``with_``
 function definition into your code.
@@ -115,3 +115,24 @@ Design Decisions
   If it made a big difference in code clarity or correness, I would be
   reticent to consider this a sufficient reason by itself, but it is a
   factor worth considering.
+
+* To aid portability of code to Python implementations that do not
+  support getting a traceback object for the exception being handled,
+  passing ``None`` as ``traceback`` to ``__exit__`` helps writing code
+  that portably follows "progressive enhancement" or "graceful
+  degradation" practices: tracebacks are properly used where possible,
+  but ignored where not.
+
+  This matches the behavior of `MicroPython <https://micropython.org>`_
+  and `Transcrypt <https://transcrypt.org>`_, two implementations of
+  Python which support ``with`` but don't support traceback objects,
+  so this suggests that it is a reasonable choice.
+
+  This is **not** always the wisest choice: some features and behavior
+  are relied on for security, correctness, or debugging, and in those
+  cases the inability to fulfill the contract of an interface must not
+  be silently hidden.
+
+  Because of this, the "no traceback" variant is "opt-in": if you're
+  using it, you deliberately included it into your project, or a
+  dependency of yours did.
