@@ -35,7 +35,7 @@ except NameError:
 
 
 def with_(manager, action):
-    """Execute an action within the some of a context manager.
+    """Execute an action within the scope of a context manager.
 
     Arguments:
         manager (ContextManager): The context manager instance to use.
