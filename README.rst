@@ -30,7 +30,7 @@ Installation
 
 ::
 
-    pip install with_
+    pip install with-as-a-function
 
 
 Usage

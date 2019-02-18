@@ -19,7 +19,7 @@ finally:
     readme_file.close()
 
 setup(
-    name='with_',
+    name='with-as-a-function',
     version=__version__,
     description=__doc__.split('\n')[0],
     long_description=long_description,
