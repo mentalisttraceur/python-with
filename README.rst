@@ -37,7 +37,7 @@ Usage
 -----
 
 The ``with_`` function implements the raw basic logic of executing a
-context manager as described in PEP-0343:
+context manager as described in PEP-343:
 
 .. code:: python
 
@@ -53,14 +53,14 @@ Which is equivalent to:
 
 .. code:: python
 
-    with open('my_file.txt) as my_file:
+    with open('my_file.txt') as my_file:
         data = my_file.read(4096)
 
 You can think of it as being functionally equivalent to:
 
 .. code:: python
 
-    def with_(manager, action)
+    def with_(manager, action):
         with manager as value:
             return action(value)
 
@@ -73,9 +73,9 @@ Portability
 
 Portable to all releases of both Python 3 and Python 2.
 
-(The oldest tested is 2.5, **without** importing ``with_statement``
-from ``__future__``, but it will likely work on all Python 2 versions
-probably on even earlier versions.)
+(The oldest tested is 2.5, **both with and without** importing
+``with_statement`` from ``__future__``, but it will likely work on all
+Python 2 versions, and probably on even earlier versions.)
 
 For Python implementations that do not support ``sys.exc_info``, a
 "no traceback" variant can be installed manually, by grabbing the
