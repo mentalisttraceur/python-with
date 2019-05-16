@@ -46,7 +46,6 @@ def with_(manager, action):
     """
     exit = type(manager).__exit__
     value = type(manager).__enter__(manager)
-    result = None
     try:
         result = action(value)
     except:
