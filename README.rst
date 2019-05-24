@@ -138,3 +138,22 @@ Design Decisions
   Because of this, the "no traceback" variant is "opt-in": if you're
   using it, you deliberately included it into your project, or a
   dependency of yours did.
+
+* Using ``from sys import exc_info as _exc_info`` instead of ``import
+  sys as _sys`` and then calling ``_sys.exc_info`` because:
+
+  1. Python's dynamic semantics mean that *any other piece of code*
+     is allowed to change ``sys.exc_info`` **globally** *at any time*.
+
+  2. Therefore first and foremost, we are communicating our intent that
+     we would rather be immune from that *as much as possible*.
+
+  3. Someone could still modify ``sys.exc_info`` before ``with_`` is
+     *first* imported, but at that point odds are higher that this was
+     done with due care of how it will effect *all* code using it.
+
+  4. Someone could modify *our* ``with_._exc_info`` name directly, but
+     at that point they *definitely* deliberately intended to do so.
+
+  5. The important thing is that we opt-out of being effected by casual,
+     careless, or experimental reassignments of ``sys.exc_info``.

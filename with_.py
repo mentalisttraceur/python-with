@@ -18,11 +18,11 @@ Provides a minimal, clean and portable interface for using context
 managers with all the advantages of functions over syntax.
 """
 
-import sys as _sys
+from sys import exc_info as _exc_info
 
 
 __all__ = ('with_',)
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 
 
 def with_(manager, action):
@@ -48,7 +48,7 @@ def with_(manager, action):
     try:
         result = action(value)
     except:
-        if not exit(manager, *_sys.exc_info()):
+        if not exit(manager, *_exc_info()):
             raise
         return None
     exit(manager, None, None, None)
