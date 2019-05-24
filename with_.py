@@ -39,10 +39,9 @@ def with_(manager, action):
         None: If the manager suppresses an exception from the action.
 
     Raises:
-        AttributeError: If the manager does not implement the
-            ``__exit__`` or ``__enter__`` methods.
-        Any: Exception raised by the executed action if the manager
-            does not suppress it.
+        Any: If raised by the action and not suppressed by the manager,
+            or if raised by the manager, or if the manager does not
+            implement the context manager protocol correctly.
     """
     exit = type(manager).__exit__
     value = type(manager).__enter__(manager)
