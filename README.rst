@@ -63,6 +63,7 @@ You can think of it as being functionally equivalent to:
     def with_(manager, action):
         with manager as value:
             return action(value)
+        return None
 
 except that it's also portable to Python implementations and versions
 that don't support the ``with`` statement.
@@ -73,9 +74,10 @@ Portability
 
 Portable to all releases of both Python 3 and Python 2.
 
-(The oldest tested is 2.5, **both with and without** importing
-``with_statement`` from ``__future__``, but it will likely work on all
-Python 2 versions, and probably on even earlier versions.)
+*Even those without the ``with`` statement.*
+
+(The oldest tested is 2.5, but it will likely work on all Python 2
+versions and probably on even earlier versions.)
 
 For Python implementations that do not support ``sys.exc_info``, a
 "no traceback" variant can be installed manually, by grabbing the
