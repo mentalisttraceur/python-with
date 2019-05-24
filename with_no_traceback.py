@@ -25,7 +25,7 @@ Note:
 """
 
 __all__ = ('with_',)
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 
 try:
@@ -61,7 +61,6 @@ def with_(manager, action):
     """
     exit = type(manager).__exit__
     value = type(manager).__enter__(manager)
-    result = None
     try:
         result = action(value)
     except _BaseException as exception:
