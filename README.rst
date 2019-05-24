@@ -74,7 +74,7 @@ Portability
 
 Portable to all releases of both Python 3 and Python 2.
 
-*Even those without the ``with`` statement.*
+*Even those without the* ``with`` *statement.*
 
 (The oldest tested is 2.5, but it will likely work on all Python 2
 versions and probably on even earlier versions.)
