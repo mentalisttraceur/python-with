@@ -38,10 +38,9 @@ def with_(manager, action):
     """Execute an action within the scope of a context manager.
 
     Arguments:
-        manager (ContextManager): The context manager instance to use.
-        action (Callable[Any, Any]): The action to execute. Must accept
-            the `as` value of the context manager as the first and only
-            positional argument.
+        manager: The context manager instance to use.
+        action: The action to execute. Must accept the `as` value
+            of the context manager as the only positional argument.
 
     Returns:
         Any: Return value of the executed action.
