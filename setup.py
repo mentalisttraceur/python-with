@@ -20,7 +20,7 @@ finally:
 
 setup(
     name='with-as-a-function',
-    version=__version__ + '.post1',
+    version=__version__ + '.post2',
     description=__doc__.split('\n')[0],
     long_description=long_description,
     license='0BSD (BSD Zero Clause License)',

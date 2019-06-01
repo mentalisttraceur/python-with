@@ -39,9 +39,9 @@ def with_(manager, action):
         None: If the manager suppresses an exception from the action.
 
     Raises:
-        Any: If raised by the action and not suppressed by the manager,
-            or if raised by the manager, or if the manager does not
-            implement the context manager protocol correctly.
+        Any: If raised by calling the action and not suppressed by the
+            manager, or if raised by the manager, or if the manager
+            does not implement the context manager protocol correctly.
     """
     exit = type(manager).__exit__
     value = type(manager).__enter__(manager)
