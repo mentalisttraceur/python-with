@@ -39,7 +39,7 @@ def with_(manager, action):
 
     Arguments:
         manager: The context manager instance to use.
-        action: The action to execute. Must accept the `as` value
+        action: The callable to execute. Must accept the `as` value
             of the context manager as the only positional argument.
 
     Returns:
