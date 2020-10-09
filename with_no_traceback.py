@@ -52,10 +52,10 @@ def with_(manager, action):
             does not implement the context manager protocol correctly.
 
     Note:
-        This "no traceback" variant, meant for Python implementations
-        that do not support getting a traceback object for an exception,
-        always passes ``None`` for the traceback argument to the context
-        manager's ``__exit__``.
+        This "no traceback" variant always passes ``None`` for the
+        ``traceback`` argument to the context manager's ``__exit__``,
+        because it is meant for Python implementations that do not
+        support getting the traceback object for an exception.
     """
     exit_ = type(manager).__exit__
     value = type(manager).__enter__(manager)
