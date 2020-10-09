@@ -18,11 +18,8 @@ Provides a minimal, clean and portable interface for using context
 managers with all the advantages of functions over syntax.
 """
 
-from sys import exc_info as _exc_info
-
-
 __all__ = ('with_',)
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 
 
 def with_(manager, action):
@@ -42,13 +39,6 @@ def with_(manager, action):
             manager, or if raised by the manager, or if the manager
             does not implement the context manager protocol correctly.
     """
-    exit = type(manager).__exit__
-    value = type(manager).__enter__(manager)
-    try:
-        result = action(value)
-    except:
-        if not exit(manager, *_exc_info()):
-            raise
-        return None
-    exit(manager, None, None, None)
-    return result
+    with manager as value:
+        return action(value)
+    return None

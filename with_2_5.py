@@ -16,22 +16,13 @@
 
 Provides a minimal, clean and portable interface for using context
 managers with all the advantages of functions over syntax.
-
-Note:
-    This is the "no traceback" variant, meant for Python implementations
-    that do not support getting a traceback object for an exception. It
-    exists to allow code using the ``with_`` interface to gracefully
-    degrade in the absence of full traceback support.
 """
+
+from __future__ import with_statement
+
 
 __all__ = ('with_',)
 __version__ = '1.0.3'
-
-
-try:
-    _BaseException = BaseException
-except NameError:
-    _BaseException = Exception
 
 
 def with_(manager, action):
@@ -50,20 +41,7 @@ def with_(manager, action):
         Any: If raised by calling the action and not suppressed by the
             manager, or if raised by the manager, or if the manager
             does not implement the context manager protocol correctly.
-
-    Note:
-        This "no traceback" variant, meant for Python implementations
-        that do not support getting a traceback object for an exception,
-        always passes ``None`` for the traceback argument to the context
-        manager's ``__exit__``.
     """
-    exit = type(manager).__exit__
-    value = type(manager).__enter__(manager)
-    try:
-        result = action(value)
-    except _BaseException as exception:
-        if not exit(manager, type(exception), exception, None):
-            raise
-        return None
-    exit(manager, None, None, None)
-    return result
+    with manager as value:
+        return action(value)
+    return None
