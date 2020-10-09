@@ -45,13 +45,13 @@ def with_(manager, action):
             manager, or if raised by the manager, or if the manager
             does not implement the context manager protocol correctly.
     """
-    exit = type(manager).__exit__
+    exit_ = type(manager).__exit__
     value = type(manager).__enter__(manager)
     try:
         result = action(value)
-    except _BaseException as exception:
-        if not exit(manager, type(exception), exception, None):
+    except _BaseException as exception:  # pylint: disable=broad-except
+        if not exit_(manager, type(exception), exception, None):
             raise
         return None
-    exit(manager, None, None, None)
+    exit_(manager, None, None, None)
     return result
