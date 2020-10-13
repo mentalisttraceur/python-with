@@ -7,14 +7,6 @@ Provides a minimal, clean and portable interface for using context
 managers with all the advantages of functions over syntax.
 
 
-Why
----
-
-Because context managers are awesome, but currently can't be used in
-as many places as I would like, and this is the first step towards
-making that possible with less boilerplate and more portability.
-
-
 Versioning
 ----------
 
