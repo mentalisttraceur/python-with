@@ -10,8 +10,8 @@ managers with all the advantages of functions over syntax.
 Versioning
 ----------
 
-This library's version numbers follow the `SemVer 2.0.0 specification
-<https://semver.org/spec/v2.0.0.html>`_.
+This library's version numbers follow the `SemVer 2.0.0
+specification <https://semver.org/spec/v2.0.0.html>`_.
 
 
 Installation
@@ -65,8 +65,8 @@ Portable to all releases of both Python 3 and Python 2.
 
 *Even those without the* ``with`` *statement.*
 
-(The oldest tested is 2.5, but it will likely work on all Python 2
-versions and probably on even earlier versions.)
+(The oldest tested is 2.5, but it will likely work on all
+Python 2 versions and probably on even earlier versions.)
 
 For Python implementations that do not support ``sys.exc_info``, a
 "no traceback" variant can be installed manually, by grabbing the
