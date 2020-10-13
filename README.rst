@@ -28,8 +28,7 @@ variant, see the `Manual Installation`_ section for tips.
 Usage
 -----
 
-The ``with_`` function implements the raw basic logic of executing a
-context manager as described in PEP-343:
+Import ``with_``:
 
 .. code:: python
 
@@ -41,14 +40,14 @@ With it we can do things like this:
 
     data = with_(open('my_file.txt'), lambda my_file: my_file.read(4096))
 
-Which is equivalent to:
+Which is similar to:
 
 .. code:: python
 
     with open('my_file.txt') as my_file:
         data = my_file.read(4096)
 
-You can think of it as being functionally equivalent to:
+The ``with_`` function is basically just
 
 .. code:: python
 
@@ -57,8 +56,8 @@ You can think of it as being functionally equivalent to:
             return action(value)
         return None
 
-except that it's also portable to Python implementations and versions
-that don't support the ``with`` statement.
+except that on Python implementations that don't have the ``with``
+statement, this package portably implements equivalent logic.
 
 
 Portability
