@@ -18,8 +18,8 @@ Provides a minimal, clean and portable interface for using context
 managers with all the advantages of functions over syntax.
 
 Note:
-    This is the "no traceback" variant, meant for Python implementations
-    that do not support getting a traceback object for an exception. It
+    This is the "no traceback" variant, for Python implementations that
+    do not support getting the traceback object for an exception. It
     exists to allow code using the ``with_`` interface to gracefully
     degrade in the absence of full traceback support.
 """
