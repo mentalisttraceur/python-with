@@ -74,6 +74,3 @@ For Python implementations that do not support ``sys.exc_info``, a
 (Saving it as ``with_.py`` has the advantage that your code can just do
 ``from with_ import with_`` and it'll just work consistently, without
 version-detecting boilerplate.)
-
-You are of course welcome to just copy-paste the tiny ``with_``
-function definition into your code.
