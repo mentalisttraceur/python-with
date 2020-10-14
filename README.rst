@@ -87,7 +87,7 @@ Depending on your needs, either:
   * ``from_future_import.py`` for Python implementations that need
     the ``from __future__ import with_statement`` line to get
     the ``with`` statement.
-  * ``manual.py`` for Python implementations which don't have the
+  * ``manual.py`` for Python implementations that don't have the
     ``with`` statement.
   * ``manual_no_traceback.py`` for Python implementations that
     have neither the ``with`` statement nor ``sys.exc_info``.
