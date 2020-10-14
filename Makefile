@@ -11,3 +11,8 @@ default:
 clean:
 	rm -rf __pycache__ build *.egg-info dist
 	rm -f *.py[oc] MANIFEST with_.py
+
+test:
+	python2.5 test.py
+	python2.7 test.py
+	python3 test.py
