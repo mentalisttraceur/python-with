@@ -82,13 +82,13 @@ Depending on your needs, either:
 
 * Take one of these files and save it as ``with_.py``:
 
-  * ``normal.py`` for Python implementations that already have the
-    ``with`` statement.
-  * ``from_future_import.py`` for Python implementations that need
-    the ``from __future__ import with_statement`` line to get
+  * ``normal.py`` for Python implementations that already have
     the ``with`` statement.
-  * ``manual.py`` for Python implementations that don't have the
-    ``with`` statement.
+  * ``from_future_import.py`` for Python implementations that
+    need the ``from __future__ import with_statement`` line
+    to get the ``with`` statement.
+  * ``manual.py`` for Python implementations that don't have
+    the ``with`` statement.
   * ``manual_no_traceback.py`` for Python implementations that
     have neither the ``with`` statement nor ``sys.exc_info``.
 
