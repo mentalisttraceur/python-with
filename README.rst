@@ -85,7 +85,7 @@ Depending on your needs, either:
   * ``normal.py`` for Python implementations that already have the
     ``with`` statement.
   * ``from_future_import.py`` for Python implementations that need
-    the ``from __future__ import with_statement`` statement to get
+    the ``from __future__ import with_statement`` line to get
     the ``with`` statement.
   * ``manual.py`` for Python implementations which don't have the
     ``with`` statement.
