@@ -7,4 +7,5 @@ default:
 	python setup.py bdist_wheel --python-tag py26.py3
 
 clean:
-	rm -rf __pycache__ *.py[oc] build *.egg-info dist
+	rm -rf __pycache__ build *.egg-info dist
+	rm -f *.py[oc] with_.py
