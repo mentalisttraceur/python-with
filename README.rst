@@ -89,7 +89,7 @@ Depending on your needs, either:
     the ``with`` statement.
   * ``manual.py`` for Python implementations which don't have the
     ``with`` statement.
-  * ``manual_no_traceback.py`` for Python implementations which
+  * ``manual_no_traceback.py`` for Python implementations that
     have neither the ``with`` statement nor ``sys.exc_info``.
 
 * Take the above files that you need, and save them in a folder
