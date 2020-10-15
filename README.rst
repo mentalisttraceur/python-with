@@ -59,6 +59,10 @@ The ``with_`` function is basically just
 except that on Python implementations that don't have the ``with``
 statement, this package portably implements equivalent logic.
 
+And of course because ``with_` is a function, you can combine it
+with ``functools.partial`` and other functional programming
+libraries and techniques for many more uses.
+
 
 Portability
 -----------
