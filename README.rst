@@ -38,14 +38,14 @@ With it we can do things like this:
 
 .. code:: python
 
-    data = with_(open('my_file.txt'), lambda my_file: my_file.read(4096))
+    data = with_(open('my_file.txt'), lambda my_file: my_file.read())
 
 Which is similar to:
 
 .. code:: python
 
     with open('my_file.txt') as my_file:
-        data = my_file.read(4096)
+        data = my_file.read()
 
 The ``with_`` function is basically just
 
