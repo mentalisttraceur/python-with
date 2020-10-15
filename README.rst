@@ -6,6 +6,9 @@ Use context managers with a function instead of a statement.
 Provides a minimal and portable interface for using context
 managers with all the advantages of functions over syntax.
 
+Allows using context managers on Python implementations that
+are too old or too incomplete to have the ``with`` statement.
+
 
 Versioning
 ----------
