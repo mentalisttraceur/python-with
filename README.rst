@@ -50,18 +50,6 @@ Which is similar to:
     with open('my_file.txt') as my_file:
         data = my_file.read()
 
-The ``with_`` function is basically just
-
-.. code:: python
-
-    def with_(manager, action):
-        with manager as value:
-            return action(value)
-        return None
-
-except that on Python implementations that don't have the ``with``
-statement, this package portably implements equivalent logic.
-
 And of course because ``with_` is a function, you can combine it
 with ``functools.partial`` and other functional programming
 libraries and techniques for many more uses.
