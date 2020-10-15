@@ -50,8 +50,8 @@ Which is similar to:
     with open('my_file.txt') as my_file:
         data = my_file.read()
 
-And of course because ``with_` is a function, you can combine it
-with ``functools.partial`` and other functional programming
+And of course because ``with_`` is a function, you can combine
+it with ``functools.partial`` and other functional programming
 libraries and techniques for many more uses.
 
 
