@@ -14,7 +14,7 @@
 
 """Use context managers with a function instead of a statement.
 
-Provides a minimal, clean and portable interface for using context
+Provides a minimal and portable interface for using context
 managers with all the advantages of functions over syntax.
 """
 
