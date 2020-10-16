@@ -22,7 +22,7 @@ from __future__ import with_statement
 
 
 __all__ = ('with_',)
-__version__ = '1.0.3'
+__version__ = '1.0.4'
 
 
 def with_(manager, action):
