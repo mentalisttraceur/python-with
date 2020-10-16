@@ -61,7 +61,7 @@ def with_(manager, action):
     value = type(manager).__enter__(manager)
     try:
         result = action(value)
-    except _BaseException as exception:  # pylint: disable=broad-except
+    except _BaseException as exception:
         if not exit_(manager, type(exception), exception, None):
             raise
         return None

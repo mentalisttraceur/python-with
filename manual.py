@@ -46,7 +46,7 @@ def with_(manager, action):
     value = type(manager).__enter__(manager)
     try:
         result = action(value)
-    except:  # pylint: disable=bare-except  # noqa: E722
+    except:
         if not exit_(manager, *_exc_info()):
             raise
         return None
