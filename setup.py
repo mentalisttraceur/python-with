@@ -57,7 +57,11 @@ else:
     except OSError as error:
         if error.errno != errno.ENOENT:
             raise
-    os.link(source_path, path_setup_py_uses)
+    try:
+        link = os.link
+    except AttributeError:
+        link = os.symlink
+    link(source_path, path_setup_py_uses)
 
 setup(
     name='with-as-a-function',
