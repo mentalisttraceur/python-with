@@ -24,9 +24,6 @@ Installation
 
     pip install with-as-a-function
 
-If you need to get it manually, or you need the "no traceback"
-variant, see the `Manual Installation`_ section for tips.
-
 
 Usage
 -----
@@ -65,31 +62,6 @@ Portable to all releases of both Python 3 and Python 2.
 (The oldest tested is 2.5, but it will likely work on all
 Python 2 versions and probably on even earlier versions.)
 
-For Python implementations that neither support the
-``with`` statement nor have ``sys.exc_info``, a
-"no traceback" variant can be installed manually.
-
-
-Manual Installation
--------------------
-
-Depending on your needs, either:
-
-* Take one of these files and save it as ``with_.py``:
-
-  * ``normal.py`` for Python implementations that already have
-    the ``with`` statement.
-  * ``from_future_import.py`` for Python implementations that
-    need the line ``from __future__ import with_statement``
-    to get the ``with`` statement.
-  * ``manual.py`` for Python implementations that don't have
-    the ``with`` statement.
-  * ``manual_no_traceback.py`` for Python implementations that
-    have neither the ``with`` statement nor ``sys.exc_info``.
-
-* Take the above files that you need, and save them in a folder
-  called ``with_`` along with a custom ``__init__.py`` that
-  conditionally imports from the right file as needed.
-
-That way you can always do ``from with_ import with_``
-in all of your other code and it'll just work.
+For Python implementations that neither support the ``with``
+statement nor have ``sys.exc_info``, a "no traceback" variant
+is included in the source that can be installed manually.

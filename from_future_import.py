@@ -11,7 +11,7 @@ from __future__ import with_statement
 
 
 __all__ = ('with_',)
-__version__ = '1.0.6'
+__version__ = '1.0.8'
 
 
 def with_(manager, action):
