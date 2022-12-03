@@ -11,7 +11,21 @@ from sys import exc_info as _exc_info
 
 
 __all__ = ('with_',)
-__version__ = '1.0.8'
+__version__ = '1.0.9'
+
+
+class _OldStyleClass:
+    pass
+
+
+_OldStyleClassInstance = type(_OldStyleClass())
+del _OldStyleClass
+
+
+def _type(obj):
+    if isinstance(obj, _OldStyleClassInstance):
+        return obj.__class__
+    return type(obj)
 
 
 def with_(manager, action):
@@ -31,8 +45,8 @@ def with_(manager, action):
             manager, or if raised by the manager, or if the manager
             does not implement the context manager protocol correctly.
     """
-    exit_ = type(manager).__exit__
-    value = type(manager).__enter__(manager)
+    exit_ = _type(manager).__exit__
+    value = _type(manager).__enter__(manager)
     try:
         result = action(value)
     except:
