@@ -28,40 +28,56 @@ Installation
 Usage
 -----
 
-Import ``with_``:
+Import ``with_``, ``iwith``, or both:
 
 .. code:: python
 
-    from with_ import with_
+    from with_ import with_, iwith
 
-With it we can do things like this:
+``with_`` wraps a function in a context manager.
+For example,
 
 .. code:: python
 
     data = with_(open('my_file.txt'), lambda my_file: my_file.read())
 
-Which is similar to:
+is similar to:
 
 .. code:: python
 
     with open('my_file.txt') as my_file:
         data = my_file.read()
 
-And of course because ``with_`` is a function, you can combine
-it with ``functools.partial`` and other functional programming
-libraries and techniques for many more uses.
+``iwith`` wraps a generator or other iterable in a context manager.
+For example,
+
+.. code:: python
+
+    lines = iwith(open('my_file.txt'), lambda my_file: my_file)
+
+is similar to:
+
+.. code:: python
+
+    def _lines():
+        with open('my_file.txt') as my_file:
+            yield from my_file
+    lines = _lines()
+
+And of course because ``with_`` and ``iwith`` are functions, you
+can combine them with ``functools.partial`` and other functional
+programming libraries and techniques for many more uses.
 
 
 Portability
 -----------
 
-Portable to all releases of both Python 3 and Python 2.
+Portable to all releases of Python 3, and releases
+of Python 2 starting with 2.2.
 
-*Even those without the* ``with`` *statement.*
+*Even those without the* ``with`` *statement and
+without the* ``yield from`` *expression.*
 
-(The oldest tested is 2.5, but it will likely work on all
-Python 2 versions and probably on even earlier versions.)
-
-For Python implementations that neither support the ``with``
-statement nor have ``sys.exc_info``, a "no traceback" variant
-is included in the source that can be installed manually.
+For popular Python reimplementations with quicks or bugs that
+make the normal implementation of this module not work, other
+implementations are included in the source distribution.

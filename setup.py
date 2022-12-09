@@ -9,7 +9,10 @@ try:
 except ImportError:
     from distutils.core import setup
 
-from normal import __doc__, __version__
+try:
+    from with_2_6 import __doc__, __version__
+except SyntaxError:
+    from with_2_2 import __doc__, __version__
 
 project_directory = os.path.abspath(os.path.dirname(__file__))
 readme_path = os.path.join(project_directory, 'README.rst')
@@ -33,25 +36,38 @@ def bdist_wheel_tag_check(tag, args=sys.argv):
 
 if 'sdist' in sys.argv:
     # When building a source distribution, include all variants:
-    modules = ['normal', 'from_future_import', 'manual', 'manual_no_traceback']
+    modules = [
+        'with_3_3',
+        'with_2_6',
+        'with_2_5',
+        'with_2_2',
+        'with_skulpt_2',
+        'with_skulpt_3',
+        'with_brython',
+        # `with_transcrypt.js` is included in MANIFEST.in
+    ]
 else:
     # When not building a source distribution, we select
     # just the file for the matching Python version:
     modules = ['with_']
 
     path_setup_py_uses = os.path.join(project_directory, 'with_.py')
-    if bdist_wheel_tag_check('py26.py3'):
-        source_path = os.path.join(project_directory, 'normal.py')
+    if bdist_wheel_tag_check('py33'):
+        source_path = os.path.join(project_directory, 'with_3_3.py')
+    elif bdist_wheel_tag_check('py26.py30'):
+        source_path = os.path.join(project_directory, 'with_2_6.py')
     elif bdist_wheel_tag_check('py25'):
-        source_path = os.path.join(project_directory, 'from_future_import.py')
-    elif bdist_wheel_tag_check('py20'):
-        source_path = os.path.join(project_directory, 'manual.py')
+        source_path = os.path.join(project_directory, 'with_2_5.py')
+    elif bdist_wheel_tag_check('py22'):
+        source_path = os.path.join(project_directory, 'with_2_2.py')
+    elif sys.version_info >= (3, 3):
+        source_path = os.path.join(project_directory, 'with_3_3.py')
     elif sys.version_info >= (2, 6):
-        source_path = os.path.join(project_directory, 'normal.py')
+        source_path = os.path.join(project_directory, 'with_2_6.py')
     elif sys.version_info >= (2, 5):
-        source_path = os.path.join(project_directory, 'from_future_import.py')
+        source_path = os.path.join(project_directory, 'with_2_5.py')
     else:
-        source_path = os.path.join(project_directory, 'manual.py')
+        source_path = os.path.join(project_directory, 'with_2_2.py')
     try:
         os.unlink(path_setup_py_uses)
     except OSError as error:
