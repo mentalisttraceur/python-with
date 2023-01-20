@@ -13,7 +13,8 @@ def _import(with_module_name):
 if sys.version_info >= (3, 3):
     _import('with_3_3')
     _import('with_brython')
-    _import('with_skulpt_3')
+    if 'Brython' not in sys.version:
+        _import('with_skulpt_3')
 else:
     _import('with_2_6')
     _import('with_2_5')
@@ -237,7 +238,7 @@ def test_throw():
     _test(_test_throw, _iwith_list)
 
 
-if __name__ == '__main__':
+def run_all_tests():
     test_return()
     test_raise()
     test_suppress()
@@ -247,3 +248,7 @@ if __name__ == '__main__':
     test_send_prematurely()
     test_send_none_prematurely()
     #test_send_none()
+
+
+if __name__ == '__main__':
+    run_all_tests()
