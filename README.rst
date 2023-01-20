@@ -78,6 +78,6 @@ of Python 2 starting with 2.2.
 *Even those without the* ``with`` *statement and
 without the* ``yield from`` *expression.*
 
-For popular Python reimplementations with quicks or bugs that
+For popular Python reimplementations with quirks or bugs that
 make the normal implementation of this module not work, other
 implementations are included in the source distribution.
